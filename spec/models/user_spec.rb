@@ -1,5 +1,42 @@
 require 'spec_helper'
 
 describe User do
-  pending "add some examples to (or delete) #{__FILE__}"
+  subject { user }
+
+  let(:user) { FactoryGirl.build :user }
+
+  its(:valid?) { should be_true }
+
+  describe 'validations' do
+    describe 'email' do
+      it 'is required' do
+        expect{ user.email = nil }.to change{ user.valid? }.from(true).to(false)
+      end
+
+      it 'has to be valid' do
+        expect{ user.email = 'invalidemail' }.to change{ user.valid? }.from(true).to(false)
+      end
+
+      it 'has to be unique' do
+        existing_user = FactoryGirl.create :user, email: 'duplicated@example.com'
+        expect{ user.email = existing_user.email }.to change{ user.valid? }.from(true).to(false)
+      end
+    end
+
+    describe 'password' do
+      it 'is required' do
+        expect{ user.password = nil }.to change{ user.valid? }.from(true).to(false)
+      end
+
+      it 'has to be equal to password_confirmation' do
+        user.password = 'F_PASSWORD'
+        user.password_confirmation = 'F_PASSWORD'
+        expect{ user.password = "CHANGED_PASSWORD" }.to change{ user.valid? }.from(true).to(false)
+      end
+
+      it 'has to be at least 6 characteres' do
+        expect{ user.password = 'p'*5 }.to change{ user.valid? }.from(true).to(false)
+      end
+    end
+  end
 end
