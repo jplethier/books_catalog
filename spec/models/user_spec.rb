@@ -38,5 +38,24 @@ describe User do
         expect{ user.password = 'p'*5 }.to change{ user.valid? }.from(true).to(false)
       end
     end
+
+    describe 'username' do
+      it 'is required' do
+        expect{ user.username = nil }.to change{ user.valid? }.from(true).to(false)
+      end
+
+      it 'has to be at least 3 characteres ' do
+        expect{ user.username = 'US' }.to change{ user.valid? }.from(true).to(false)
+      end
+
+      it 'has to be at most 10 characteres ' do
+        expect{ user.username = 'U'*11 }.to change{ user.valid? }.from(true).to(false)
+      end
+
+      it 'has to be unique' do
+        existing_user = FactoryGirl.create :user, username: 'username'
+        expect{ user.username = existing_user.username }.to change{ user.valid? }.from(true).to(false)
+      end
+    end
   end
 end
