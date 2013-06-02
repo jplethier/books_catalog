@@ -32,13 +32,17 @@
       %ul
         %li= link_to 'home', root_path
     .user_links
-      %ul
-        - if user_signed_in?
+      - if user_signed_in?
+        %ul
           %li= link_to 'settings', edit_user_registration_path
           %li= link_to 'logout', destroy_user_session_path, method: :delete
-        - else
-          %li= link_to 'login', new_user_session_path
-          %li= link_to 'register', new_user_registration_path
+      - else
+        .login
+          = form_tag user_session_path do
+            = text_field_tag 'user[login]', '', autofocus: true, placeholder: 'username'
+            = password_field_tag 'user[password]', '', placeholder: '******'
+            %input.primary{ type: 'submit', value: 'Login' }
+          = link_to 'register', new_user_registration_path, class: 'register'
 
   %article
     = yield
