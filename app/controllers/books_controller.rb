@@ -15,6 +15,7 @@ class BooksController < ApplicationController
   end
 
   def create
+    @book.user = current_user
     if @book.save
       redirect_to books_path, notice: 'Book was created successfully.'
     else
