@@ -1,0 +1,14 @@
+%h2 New Book
+
+= form_for @book do |f|
+  .field
+    = f.label :title
+    %br
+    = f.text_field :title, autofocus: true
+
+  .field
+    = f.label :isbn
+    %br
+    = f.text_field :isbn
+
+  .field= f.submit 'Confirm'

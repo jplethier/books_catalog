@@ -31,6 +31,8 @@
     .menu
       %ul
         %li= link_to 'home', root_path
+        - if user_signed_in?
+          %li= link_to 'new book', new_book_path
     .user_links
       - if user_signed_in?
         %ul
