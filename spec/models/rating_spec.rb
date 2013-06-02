@@ -24,8 +24,12 @@ describe Rating do
       expect{ rating.grade = 'a' }.to change{ rating.valid? }.from(true).to(false)
     end
 
-    it 'book should be in (0..5)' do
+    it 'book should be in (1..5)' do
       expect{ rating.grade = 6 }.to change{ rating.valid? }.from(true).to(false)
+    end
+
+    it 'book should be in (1..5)' do
+      expect{ rating.grade = 0 }.to change{ rating.valid? }.from(true).to(false)
     end
   end
 end
