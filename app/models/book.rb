@@ -17,4 +17,8 @@ class Book < ActiveRecord::Base
   belongs_to :user
 
   has_many :ratings
+
+  def average_grade
+    self.ratings.average(:grade) || 0.0
+  end
 end
