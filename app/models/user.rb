@@ -30,6 +30,9 @@ class User < ActiveRecord::Base
 
   validates :username, presence: true, uniqueness: true, length: { in: 3..10 }
 
+  has_many :books
+  has_many :ratings
+
   attr_accessor :login
 
   protected
