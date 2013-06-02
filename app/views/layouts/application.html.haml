@@ -41,7 +41,7 @@
           = form_tag user_session_path do
             = text_field_tag 'user[login]', '', autofocus: true, placeholder: 'username'
             = password_field_tag 'user[password]', '', placeholder: '******'
-            %input.primary{ type: 'submit', value: 'Login' }
+            %input.primary{ type: 'submit', value: 'login' }
           = link_to 'register', new_user_registration_path, class: 'register'
 
   %article
