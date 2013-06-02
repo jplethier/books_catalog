@@ -42,6 +42,9 @@ end
 # Authentication
 gem 'devise', github: 'plataformatec/devise', branch: 'rails4'
 
+# Authorization
+gem 'cancan'
+
 group :development, :test do
   gem 'awesome_print'
   gem 'factory_girl_rails'
