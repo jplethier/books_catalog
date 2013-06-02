@@ -1,0 +1,26 @@
+ul.books_list {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+
+  li {
+    float: left;
+    margin: 10px;
+    border: 1px solid $gray;
+    padding: 10px;
+
+    p {
+      font-size: 12px;
+    }
+
+    p.title {
+      font-size: 21px;
+      font-weight: bold;
+    }
+
+    p.rating {
+      font-size: 21px;
+      color: $yellow;
+    }
+  }
+}

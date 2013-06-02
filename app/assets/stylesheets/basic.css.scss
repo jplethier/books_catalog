@@ -1,6 +1,7 @@
 body {
   margin: 0;
   padding: 0;
+  font-family: Arial;
 }
 
 .nav {
@@ -67,5 +68,12 @@ body {
       font-size: 12px;
       font-weight: bold;
     }
+  }
+}
+
+article {
+  h2 {
+    font-size: 30px;
+    margin: 10px;
   }
 }
