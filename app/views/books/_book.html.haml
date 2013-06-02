@@ -1,24 +1,20 @@
-%li
+%li{ id: "book_#{book.isbn.upcase}" }
   %p.title= book.title
   %p.isbn= book.isbn
-  %p.user= book.user.username
-  %p.rating
-    - grade = book.average_grade
-    - if grade == 0.0
-      - 5.times do |i|
-        <i class='icon-star-empty' title='0'></i>
-    - else
-      - stars_count = 0
-      - grade.floor.times do |i|
-        <i class='icon-star' title='#{grade}'></i>
-        - stars_count += 1
-      - if (grade < 1 && grade >= 0.5) || (grade%grade.floor) >= 0.5
-        <i class='icon-star-half-full' title='#{grade}'></i>
-        - stars_count += 1
-      - (5 - stars_count).times do |i|
-        <i class='icon-star-empty' title='#{grade}'></i>
+  %p.user
+    = book.user.username
+    already read.
+    = link_to 'See more', book_path(book)
+  %p.rating= render 'rating', book: book
   - if user_signed_in?
     %p.grade
-      = form_for [book, book.ratings.build] do |f|
-        = f.label :grade
-        = f.text_field :grade
+      - if book.ratings.where(user_id: current_user.id).blank?
+        = form_for [book, book.ratings.build], remote: true do |f|
+          Already read?
+          %br
+          Give your grade to this book:
+          %br
+          = f.text_field :grade
+          = f.submit 'Confirm'
+      - else
+        You already gave a grade for this book!

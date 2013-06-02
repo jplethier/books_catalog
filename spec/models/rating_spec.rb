@@ -16,6 +16,11 @@ describe Rating do
       expect{ rating.book = nil }.to change{ rating.valid? }.from(true).to(false)
     end
 
+    it 'book and user combination should be unique' do
+      existing_rating = FactoryGirl.create :rating, user: rating.user
+      expect{ rating.book = existing_rating.book }.to change{ rating.valid? }.from(true).to(false)
+    end
+
     it 'grade should be required' do
       expect{ rating.grade = nil }.to change{ rating.valid? }.from(true).to(false)
     end

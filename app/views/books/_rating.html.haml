@@ -1,0 +1,14 @@
+- grade = book.average_grade
+- if grade == 0.0
+  - 5.times do |i|
+    <i class='icon-star-empty' title='0'></i>
+- else
+  - stars_count = 0
+  - grade.floor.times do |i|
+    <i class='icon-star' title='#{grade}'></i>
+    - stars_count += 1
+  - if (grade < 1 && grade >= 0.5) || (grade%grade.floor) >= 0.5
+    <i class='icon-star-half-full' title='#{grade}'></i>
+    - stars_count += 1
+  - (5 - stars_count).times do |i|
+    <i class='icon-star-empty' title='#{grade}'></i>
