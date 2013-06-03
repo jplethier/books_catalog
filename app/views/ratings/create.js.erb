@@ -2,6 +2,7 @@
   $('#book_<%= @rating.book.isbn.upcase %> p.grade span.error').remove();
   $('#book_<%= @rating.book.isbn.upcase %> p.grade').append('<span class="error">Your grade to this book was not saved because some error ocurred.</span>');
 <%- else %>
+  $('#book_<%= @rating.book.isbn.upcase %> form').remove()
   $('#book_<%= @rating.book.isbn.upcase %> p.grade').html('Your grade to this book was saved.')
   $('#book_<%= @rating.book.isbn.upcase %> p.rating').html('<%= j render "books/rating", book: @rating.book %>');
 <%- end %>
