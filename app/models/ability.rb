@@ -33,6 +33,8 @@ class Ability
 
     unless user.new_record?
       can :create, Book
+      can :edit, Book, user_id: user.id
+      can :update, Book, user_id: user.id
       can :create, Rating
     end
   end

@@ -1,3 +1,7 @@
+span.isbn {
+  margin: 10px;
+}
+
 ul.books_list {
   padding: 0;
   margin: 0;
@@ -23,6 +27,33 @@ ul.books_list {
     p.rating {
       font-size: 21px;
       color: $yellow;
+    }
+  }
+}
+
+ul.ratings_list {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+
+  li {
+    float: left;
+    margin: 10px;
+    border: 1px solid $gray;
+    padding: 10px;
+    width: 250px;
+    height: 30px;
+    font-size: 21px;
+
+    p {
+      margin: 0 5px;
+      float: left;
+      width: 100px;
+    }
+
+    p.rating {
+      color: $yellow;
+      width: 130px;
     }
   }
 }

@@ -6,6 +6,19 @@ class BooksController < ApplicationController
     params[:book] &&= book_params
   end
 
+  def edit
+
+  end
+
+  def update
+    if @book.update_attributes(book_params)
+      redirect_to book_path(@book), notice: 'Book was updated successfully.'
+    else
+      flash.now[:error] = 'Some error prohibited this book from being updated.'
+      render :edit
+    end
+  end
+
   def index
 
   end
@@ -22,6 +35,10 @@ class BooksController < ApplicationController
       flash.now[:error] = 'Some error prohibited this book from being saved.'
       render :new
     end
+  end
+
+  def show
+
   end
 
   private

@@ -1,0 +1,11 @@
+%li
+  %p= rating.user.username
+  %p.rating
+    - if rating.grade == 0.0
+      - 5.times do |i|
+        <i class='icon-star-empty' title='0'></i>
+    - else
+      - rating.grade.floor.times do |i|
+        <i class='icon-star' title='#{rating.grade}'></i>
+      - (5 - rating.grade.floor).times do |i|
+        <i class='icon-star-empty' title='#{rating.grade}'></i>

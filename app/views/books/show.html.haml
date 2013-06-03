@@ -1,0 +1,8 @@
+%h2= @book.title
+%span.isbn= @book.isbn
+- if user_signed_in? && @book.user == current_user
+  = link_to 'Edit', edit_book_path(@book)
+
+%h3 Users who already read and grade this book:
+%ul.ratings_list
+  = render @book.ratings
