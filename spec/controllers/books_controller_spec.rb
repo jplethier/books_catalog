@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe BooksController do
-  include Devise::TestHelpers
 
   let(:book) { stub_model(Book, title: 'title', isbn: 'isbn') }
   let(:user) { stub_model(User) }
