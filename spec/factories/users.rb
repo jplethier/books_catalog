@@ -7,4 +7,8 @@ FactoryGirl.define do
     password_confirmation "F_PASSWORD"
     sequence(:username) { |n| "F_#{n}" }
   end
+
+  factory :admin_user, parent: :user do
+    admin true
+  end
 end

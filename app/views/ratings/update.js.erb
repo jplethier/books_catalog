@@ -1,0 +1,8 @@
+<%- if @rating.new_record? %>
+  $('#rating_<%= @rating.id %> p.grade span.error').remove();
+  $('#rating_<%= @rating.id %> p.grade').append('<span class="error">This grade was not updated because some error ocurred.</span>');
+<%- else %>
+  $('#rating_<%= @rating.id %> p.grade span.success').remove();
+  $('#rating_<%= @rating.id %> p.grade').append('<span class="success">This grade was updated successfully.</span>');
+  $('#rating_<%= @rating.id %> p.rating').html('<%= j render "books/rating", book: @rating.book %>');
+<%- end %>

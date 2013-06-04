@@ -58,4 +58,20 @@ describe User do
       end
     end
   end
+
+  # describe 'methods' do
+  #   describe 'find_first_by_auth_conditions' do
+  #     before do
+  #       user.save
+  #       user.confirm!
+  #     end
+  #     it 'with login parameter' do
+  #       expect{ User.find_first_by_auth_conditions(login: user.username) }.to eq(user)
+  #     end
+
+  #     it 'without login parameter' do
+  #       expect{ User.find_first_by_auth_conditions(email: user.username) }.to eq(user)
+  #     end
+  #   end
+  # end
 end

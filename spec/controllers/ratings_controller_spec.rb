@@ -27,4 +27,22 @@ describe RatingsController do
       expect(response).to be_success
     end
   end
+
+  describe 'update' do
+    let(:params)  { { book_id: 1, id: 1, rating: { grade: 3 } } }
+
+    it 'successfully' do
+      Rating.stub(find: rating)
+      rating.stub(update_attributes: true)
+      xhr :post, :update, params
+      expect(response).to be_success
+    end
+
+    it 'failure' do
+      Rating.stub(find: rating)
+      rating.stub(update_attributes: false)
+      xhr :post, :update, params
+      expect(response).to be_success
+    end
+  end
 end

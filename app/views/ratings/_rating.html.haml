@@ -1,4 +1,4 @@
-%li
+%li{ id: "rating_#{rating.id} "}
   %p= rating.user.username
   %p.rating
     - if rating.grade == 0.0
@@ -9,3 +9,10 @@
         <i class='icon-star' title='#{rating.grade}'></i>
       - (5 - rating.grade.floor).times do |i|
         <i class='icon-star-empty' title='#{rating.grade}'></i>
+  - if can? :update, rating
+    %p.grade
+      = form_for [rating.book, rating], remote: true do |f|
+        Edit this grade
+        %br
+        = f.text_field :grade
+        = f.submit 'Confirm'

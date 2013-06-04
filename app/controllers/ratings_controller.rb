@@ -12,6 +12,10 @@ class RatingsController < ApplicationController
     @rating.save
   end
 
+  def update
+    @rating.update_attributes(rating_params)
+  end
+
   protected
 
   def rating_params

@@ -35,6 +35,11 @@ class Ability
       can :create, Book
       can :update, Book, user_id: user.id
       can :create, Rating
+      can :update, Rating, user_id: user.id
+    end
+
+    if user.admin
+      can :update, Rating
     end
   end
 end
